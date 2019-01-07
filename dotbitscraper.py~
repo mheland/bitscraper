@@ -33,4 +33,9 @@ for dom in expired:
     thelist.write(dom + ".bit\n")
 
 thelist.close
+
+flipit = "Adam"
+for a in reversed(flipit):
+    print(a.capitalize(), end="")
+    
           
