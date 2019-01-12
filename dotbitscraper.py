@@ -1,16 +1,15 @@
-
 import urllib.request
 import re
 import gzip
 import time
 
 # compile regex to find .bit domain names, create regex object
-q=re.compile("domainSelect\(\"([A-Za-z]+)\.bit\"\)")
-expired=[]
+q = re.compile("domainSelect\(\"([A-Za-z]+)\.bit\"\)")
+expired = []
 
 
 for pnumber in range(60, 63):
-    pagestring="https://dotbit.me/get_expired_domains.php?s=date&w=desc&p={}&_=1546548861087".format(pnumber)
+    pagestring = "https://dotbit.me/get_expired_domains.php?s=date&w=desc&p={}&_=1546548861087".format(pnumber)
     print ("Retreiving: " + pagestring)
     page = urllib.request.Request(pagestring)
 # add headers from Firefox to trick .bit registration site
@@ -34,6 +33,6 @@ for pnumber in range(60, 63):
 # write the list to a file and console
 thelist = open("/home/magnus/dotbitexpired.txt", "w")
 for dom in expired:
-    print (dom  + ".bit")
+    print (dom + ".bit")
     thelist.write(dom + ".bit\n")
 thelist.close
